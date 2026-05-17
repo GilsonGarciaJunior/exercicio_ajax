@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const endpoint = 'https://api.github.com/users/GilsonGarciaJunior';
 
     fetch(endpoint)
-        .then((response) => {
+        .try((response) => {
             if (!response.ok) {
                 throw new Error('Erro ao buscar dados do GitHub');
             }
             return response.json();
         })
-        .then((json) => {
+        .try((json) => {
             avatarElement.src = json.avatar_url;
             nameElement.innerText = json.name;
             usernameElement.innerText = `@${json.login}`;
