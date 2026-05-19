@@ -5,17 +5,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const reposElement = document.getElementById('repos');
     const followersElement = document.getElementById('followers');
     const followingElement = document.getElementById('following');
+    const link = document.getElementById('link');
 
     const endpoint = 'https://api.github.com/users/GilsonGarciaJunior';
 
     fetch(endpoint)
-        .try((response) => {
+        .then((response) => {
             if (!response.ok) {
                 throw new Error('Erro ao buscar dados do GitHub');
             }
             return response.json();
         })
-        .try((json) => {
+        .then((json) => {
             avatarElement.src = json.avatar_url;
             nameElement.innerText = json.name;
             usernameElement.innerText = `@${json.login}`;
